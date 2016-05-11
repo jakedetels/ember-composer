@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from './template';
-import ExtractParams from '../composer-get-params/component';
+import EmberComposer from '../ember-composer/component';
 
 export default Ember.Component.extend({
   layout,
@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   
   init() {
     this._super(...arguments);
-    if ( ! (this.parentView instanceof ExtractParams)) {
+    if ( ! (this.parentView instanceof EmberComposer)) {
       throw new Error('Incorrect use of {{composer-param}} component. May only be used if the parent view has defined at the top of the template: `{{#composer-get-params}}{{yield}}{{/composer-get-params}}`');
     }
 

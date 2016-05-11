@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import ComponentLogMixin from 'layout-component/mixins/component-log';
+import ComponentLogMixin from 'ember-composer/mixins/component-log';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | component log');

@@ -1,0 +1,29 @@
+{{#with (hash
+    key0=(component "ember-composer-param" param0)
+    key1=(component "ember-composer-param" param1)
+    key2=(component "ember-composer-param" param2)
+    key3=(component "ember-composer-param" param3)
+    key4=(component "ember-composer-param" param4)
+    key5=(component "ember-composer-param" param5)
+    key6=(component "ember-composer-param" param6)
+    key7=(component "ember-composer-param" param7)
+    key8=(component "ember-composer-param" param8)
+    key9=(component "ember-composer-param" param9)
+  ) as |paramsHash|}}
+  
+  {{ember-composer-process this paramsHash (hash
+    key0=(component "ember-composer-layer" param0)
+    key1=(component "ember-composer-layer" param1)
+    key2=(component "ember-composer-layer" param2)
+    key3=(component "ember-composer-layer" param3)
+    key4=(component "ember-composer-layer" param4)
+    key5=(component "ember-composer-layer" param5)
+    key6=(component "ember-composer-layer" param6)
+    key7=(component "ember-composer-layer" param7)
+    key8=(component "ember-composer-layer" param8)
+    key9=(component "ember-composer-layer" param9)
+  )}}
+
+  {{yield paramsHash}}
+  
+{{/with}}
