@@ -1,6 +1,9 @@
 import Ember from 'ember';
+import layout from './template';
 
 export default Ember.Component.extend({
+  layout,
+
   attributeBindings: ['layer'],
 
   init() {
@@ -14,17 +17,26 @@ export default Ember.Component.extend({
     this.set('tagless', this.tagless || this.tagLess);
   },
 
-  willInsertElement() {
-    this._super(...arguments);
-    let html = this.registry.get(this.layer);
-    if (! html) {
-      throw new Error(`A parameter named "${this.layer}" was not provided.`);
+  willRender() {
+    this.html = this.registry.get(this.layer);
+    
+    if (this.html) { return; }
+
+    if (this.required) {
+      let parentComponentName = this.parentView.constructor.toString();
+      parentComponentName = (parentComponentName.match(/([\w-]+):$/) || [])[1];
+      throw new Error(`The "${parentComponentName}" component expects a parameter named "${this.layer}" to be provided.`);
+    } else {
+      this.set('useDefault', true);  
     }
+  },
+
+  willInsertElement() {
     if (this.tagless) {
-      html.insertAfter(this.element);
+      this.html.insertAfter(this.element);
       this.$().attr('style', 'display:none;');
     } else {
-      this.$().html(html);  
+      this.$().html(this.html);  
     }
   },
 
