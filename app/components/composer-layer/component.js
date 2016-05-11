@@ -1,0 +1,1 @@
+export { default } from 'layout-component/components/composer-layer/component';
